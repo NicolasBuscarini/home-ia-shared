@@ -508,6 +508,30 @@ const enUS = {
   'operations.capture.gapsDetail': 'in capture',
   'operations.capture.note':
     'Local development environment. Playback does not validate camera latency, image quality, or stability.',
+  'operations.capture.settings.eyebrow': 'CAPTURE SETTINGS',
+  'operations.capture.settings.title': 'Runtime parameters',
+  'operations.capture.settings.description':
+    'Non-secret limits applied by the monitoring service on the next capture cycle. RTSP addresses and credentials remain in the environment.',
+  'operations.capture.settings.loading': 'Loading capture settings…',
+  'operations.capture.settings.enabled': 'Capture enabled',
+  'operations.capture.settings.segmentSeconds': 'Segment duration (seconds)',
+  'operations.capture.settings.maximumSegments': 'Maximum retained segments',
+  'operations.capture.settings.maximumMegabytes': 'Maximum segment size (MB)',
+  'operations.capture.settings.profile': 'Profile',
+  'operations.capture.settings.state': 'State',
+  'operations.capture.settings.revision': 'Revision {revision}',
+  'operations.capture.settings.save': 'Apply settings',
+  'operations.capture.settings.saving': 'Applying…',
+  'operations.capture.settings.saved': 'Capture settings applied. The service revalidates on the next cycle.',
+  'operations.capture.settings.confirm':
+    'Changing the capture state can interrupt video for a few seconds. Apply the new settings?',
+  'operations.capture.settings.remoteOnly':
+    'Runtime settings are available only when the portal uses the remote monitoring service (cutover).',
+  'operations.capture.settings.unavailable':
+    'The monitoring service did not respond; settings were not changed.',
+  'operations.capture.settings.invalid':
+    'Review the limits: segment 1–60 s, segments 1–10000, size 1–1024 MB.',
+  'operations.capture.settings.reload': 'Reload',
   'player.status.notStarted': 'Player not started yet',
   'player.status.preparing': 'Preparing player',
   'player.status.playing': 'Playing',
@@ -1196,6 +1220,29 @@ const ptBR: Record<TranslationKey, string> = {
   'operations.capture.gapsDetail': 'de captura',
   'operations.capture.note':
     'Ambiente local de desenvolvimento. A reprodução não homologa latência, qualidade ou estabilidade da câmera.',
+  'operations.capture.settings.eyebrow': 'CONFIGURAÇÃO DE CAPTURA',
+  'operations.capture.settings.title': 'Parâmetros em runtime',
+  'operations.capture.settings.description':
+    'Limites não secretos aplicados pelo serviço de Monitoramento no próximo ciclo de captura. Endereço RTSP e credenciais permanecem no ambiente.',
+  'operations.capture.settings.loading': 'Carregando configuração de captura…',
+  'operations.capture.settings.enabled': 'Captura habilitada',
+  'operations.capture.settings.segmentSeconds': 'Duração do segmento (segundos)',
+  'operations.capture.settings.maximumSegments': 'Máximo de segmentos retidos',
+  'operations.capture.settings.maximumMegabytes': 'Tamanho máximo do segmento (MB)',
+  'operations.capture.settings.profile': 'Perfil',
+  'operations.capture.settings.state': 'Estado',
+  'operations.capture.settings.revision': 'Revisão {revision}',
+  'operations.capture.settings.save': 'Aplicar configuração',
+  'operations.capture.settings.saving': 'Aplicando…',
+  'operations.capture.settings.saved': 'Configuração aplicada. O serviço revalida no próximo ciclo.',
+  'operations.capture.settings.confirm':
+    'Alterar o estado da captura pode interromper o vídeo por alguns segundos. Aplicar a nova configuração?',
+  'operations.capture.settings.remoteOnly':
+    'A configuração em runtime está disponível apenas quando o portal usa o serviço de Monitoramento remoto (cutover).',
+  'operations.capture.settings.unavailable': 'O serviço de Monitoramento não respondeu; nada foi alterado.',
+  'operations.capture.settings.invalid':
+    'Revise os limites: segmento 1–60 s, segmentos 1–10000, tamanho 1–1024 MB.',
+  'operations.capture.settings.reload': 'Recarregar',
   'player.status.notStarted': 'Player ainda não iniciado',
   'player.status.preparing': 'Preparando player',
   'player.status.playing': 'Reproduzindo',
