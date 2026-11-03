@@ -43,8 +43,27 @@ export const THEMES = [
 
 export type ThemeId = (typeof THEMES)[number]['id'];
 
+export const THEME_STYLES = [
+  {
+    id: 'classic',
+    preview: { label: 'Aa', radius: '0.75rem', background: '#18211f', accent: '#8ce0b4' },
+  },
+  {
+    id: 'modern',
+    preview: { label: 'Aa', radius: '1.15rem', background: '#101a29', accent: '#8ecbff' },
+  },
+  {
+    id: 'rustic',
+    preview: { label: 'Aa', radius: '0.3rem', background: '#211b12', accent: '#f4c56e' },
+  },
+] as const;
+
+export type ThemeStyleId = (typeof THEME_STYLES)[number]['id'];
+
 export const DEFAULT_THEME: ThemeId = 'forest';
+export const DEFAULT_THEME_STYLE: ThemeStyleId = 'classic';
 const STORAGE_KEY = 'garage-watch.theme.v1';
+const STYLE_STORAGE_KEY = 'garage-watch.theme-style.v1';
 
 export function isThemeId(value: unknown): value is ThemeId {
   return THEMES.some((theme) => theme.id === value);
@@ -56,6 +75,29 @@ export function readSavedTheme(): ThemeId {
     return isThemeId(saved) ? saved : DEFAULT_THEME;
   } catch {
     return DEFAULT_THEME;
+  }
+}
+
+export function isThemeStyleId(value: unknown): value is ThemeStyleId {
+  return THEME_STYLES.some((style) => style.id === value);
+}
+
+export function readSavedThemeStyle(): ThemeStyleId {
+  try {
+    const saved = window.localStorage.getItem(STYLE_STORAGE_KEY);
+    return isThemeStyleId(saved) ? saved : DEFAULT_THEME_STYLE;
+  } catch {
+    return DEFAULT_THEME_STYLE;
+  }
+}
+
+export function applyThemeStyle(styleId: ThemeStyleId): void {
+  const style = THEME_STYLES.find((candidate) => candidate.id === styleId) ?? THEME_STYLES[0];
+  document.documentElement.dataset.themeStyle = style.id;
+  try {
+    window.localStorage.setItem(STYLE_STORAGE_KEY, style.id);
+  } catch {
+    // O estilo ainda funciona nesta página quando armazenamento local está bloqueado.
   }
 }
 

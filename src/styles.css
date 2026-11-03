@@ -1,3 +1,39 @@
+:root {
+  --style-font-body: var(--font-ui);
+  --style-font-display: var(--font-ui);
+  --style-radius-card: 0.75rem;
+  --style-radius-control: 0.5rem;
+  --style-shadow-panel: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+  --style-border-width: 1px;
+  --style-letter-spacing: 0;
+  --style-panel-texture: none;
+  --style-eyebrow-transform: uppercase;
+  --style-eyebrow-letter-spacing: 0.08em;
+}
+
+[data-theme-style="modern"] {
+  --style-radius-card: 1.15rem;
+  --style-radius-control: 0.7rem;
+  --style-shadow-panel: 0 1.25rem 3rem rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  --style-letter-spacing: -0.015em;
+  --style-panel-texture: linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 55%);
+}
+
+[data-theme-style="rustic"] {
+  --style-font-body: Georgia, "Times New Roman", serif;
+  --style-font-display: Georgia, "Times New Roman", serif;
+  --style-radius-card: 0.3rem;
+  --style-radius-control: 0.25rem;
+  --style-shadow-panel: 0 0.35rem 0 rgba(0, 0, 0, 0.25);
+  --style-border-width: 2px;
+  --style-letter-spacing: 0.015em;
+  --style-panel-texture: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.025) 0 1px,
+    transparent 1px 4px
+  );
+}
+
 :root,
 :root[data-theme="forest"] {
   color-scheme: dark;
@@ -1938,38 +1974,260 @@ button.camera-card:hover,
     transform: none;
   }
 }
-.clip-timeline {
+.clips-header {
+  align-items: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.clips-header-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.clips-tabs {
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.clips-tab {
+  background: transparent;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 0.55rem 0.75rem;
+}
+
+.clips-tab[aria-selected="true"] {
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+.clips-tab:hover {
+  color: var(--accent);
+}
+
+.clips-filters {
+  background: var(--toolbar-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 0.75rem;
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 0.85rem;
+}
+
+.clips-quick-ranges {
+  border: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.clips-filter-summary {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.clips-results-header {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.clips-empty {
+  border: 1px dashed var(--panel-border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+
+.clip-groups {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.clip-day-title {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0 0 0.6rem;
+  text-transform: uppercase;
+}
+
+.clip-card-grid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.clip-timeline-item {
-  align-items: center;
-  border-bottom: 1px solid var(--panel-border);
+.clip-card {
+  min-width: 0;
+}
+
+.clip-card-open {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 0.75rem;
+  color: inherit;
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem;
-  padding: 0.85rem 0;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+}
+
+.clip-card-open:hover,
+.clip-card-open:focus-visible {
+  border-color: var(--accent);
+}
+
+.clip-card-open:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.clip-card-media {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  display: block;
+  position: relative;
+  width: 100%;
 }
 
 .clip-thumbnail {
-  border-radius: 0.6rem;
-  flex: 0 0 7rem;
-  height: 3.9375rem;
-  max-width: 7rem;
-  min-width: 0;
+  display: block;
+  height: 100%;
   object-fit: cover;
-  background: var(--panel-bg);
-  width: 7rem;
+  width: 100%;
 }
 
-.clip-summary {
+.clip-thumbnail-placeholder {
+  align-items: center;
+  background: var(--toolbar-bg);
+  color: var(--text-muted);
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: center;
+}
+
+.clip-card-duration {
+  background: rgba(0, 0, 0, 0.72);
+  border-radius: 0.35rem;
+  bottom: 0.4rem;
+  color: #fff;
+  font-size: 0.72rem;
+  font-variant-numeric: tabular-nums;
+  padding: 0.12rem 0.35rem;
+  position: absolute;
+  right: 0.4rem;
+}
+
+.clip-card-body {
   display: grid;
-  flex: 1 1 12rem;
-  gap: 0.2rem;
-  min-width: 0;
+  gap: 0.35rem;
+  padding: 0.65rem 0.75rem 0.75rem;
+}
+
+.clip-card-time {
+  font-weight: 600;
+}
+
+.clip-card-meta {
+  color: var(--text-muted);
+  font-size: 0.82rem;
   overflow-wrap: anywhere;
+}
+
+.clip-card-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.clip-card-badges .badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.clips-pagination {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.clips-settings {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.clips-settings > .panel-card {
+  margin: 0;
+}
+
+.clip-dialog-backdrop {
+  align-items: center;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  inset: 0;
+  justify-content: center;
+  padding: 1rem;
+  position: fixed;
+  z-index: 1050;
+}
+
+.clip-dialog {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 1rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
+  max-height: calc(100vh - 2rem);
+  max-width: 56rem;
+  overflow: auto;
+  width: 100%;
+}
+
+.clip-dialog-header {
+  align-items: flex-start;
+  border-bottom: 1px solid var(--panel-border);
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: 1rem 1.1rem;
+}
+
+.clip-dialog-body {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.clip-dialog-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .clip-video {
@@ -1991,13 +2249,16 @@ button.camera-card:hover,
 }
 
 @media (max-width: 575.98px) {
-  .clip-thumbnail {
-    flex-basis: 5rem;
-    height: 2.8125rem;
-    width: 5rem;
+  .clip-card-grid {
+    grid-template-columns: 1fr;
   }
-  .clip-timeline-item > .btn {
-    width: 100%;
+  .clip-dialog-backdrop {
+    padding: 0;
+  }
+  .clip-dialog {
+    border-radius: 0;
+    max-height: 100vh;
+    min-height: 100vh;
   }
   .clip-metadata {
     grid-template-columns: 1fr;
@@ -2050,4 +2311,84 @@ button.camera-card:hover,
 
 .people-table td {
   overflow-wrap: anywhere;
+}
+
+/* Variable styling layer: shared by the shell and every federated module. */
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--style-font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--style-font-display);
+  letter-spacing: var(--style-letter-spacing);
+}
+
+.panel-card,
+.camera-card,
+.clip-card-open,
+.clip-dialog,
+.theme-menu,
+.theme-trigger {
+  border-radius: var(--style-radius-card);
+  border-width: var(--style-border-width);
+}
+
+.panel-card,
+.camera-card,
+.clip-card-open,
+.clip-dialog {
+  background-image: var(--style-panel-texture);
+  box-shadow: var(--style-shadow-panel);
+}
+
+.btn,
+.form-control,
+.form-select,
+.view-tab,
+.clips-tab,
+.theme-option {
+  border-radius: var(--style-radius-control);
+}
+
+.eyebrow {
+  letter-spacing: var(--style-eyebrow-letter-spacing);
+  text-transform: var(--style-eyebrow-transform);
+}
+
+.theme-trigger-style {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+}
+
+.theme-style-menu {
+  border-top: 1px solid var(--panel-border);
+  margin-top: 0.35rem;
+  padding-top: 0.35rem;
+}
+
+.theme-style-preview {
+  align-items: center;
+  border: 2px solid;
+  display: flex;
+  font-family: var(--style-font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  height: 2.2rem;
+  justify-content: center;
+  width: 3.2rem;
 }
