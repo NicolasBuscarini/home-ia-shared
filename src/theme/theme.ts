@@ -56,6 +56,14 @@ export const THEME_STYLES = [
     id: 'rustic',
     preview: { label: 'Aa', radius: '0.3rem', background: '#211b12', accent: '#f4c56e' },
   },
+  {
+    id: 'corporate',
+    preview: { label: 'Aa', radius: '0.35rem', background: '#0f1b2d', accent: '#5aa9ff' },
+  },
+  {
+    id: 'minimal',
+    preview: { label: 'Aa', radius: '0.5rem', background: '#f4f4f2', accent: '#2f3437' },
+  },
 ] as const;
 
 export type ThemeStyleId = (typeof THEME_STYLES)[number]['id'];

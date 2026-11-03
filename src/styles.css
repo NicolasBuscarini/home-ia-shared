@@ -1648,17 +1648,35 @@ button.camera-card:hover,
   top: calc(100% + 0.5rem);
   right: 0;
   display: grid;
-  width: min(21rem, calc(100vw - 2rem));
+  width: min(26rem, calc(100vw - 2rem));
   max-height: min(70vh, 34rem);
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.5rem;
+  grid-template-columns: 1fr;
+  gap: 0.8rem;
   overflow-y: auto;
   overscroll-behavior: contain;
-  padding: 0.65rem;
+  padding: 0.75rem;
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
   border-radius: 1rem;
   box-shadow: 0 16px 42px #0008;
+}
+.theme-menu-section {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.theme-menu-title {
+  grid-column: 1 / -1;
+  padding: 0 0.2rem;
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 .theme-option {
   display: grid;
@@ -2198,6 +2216,15 @@ button.camera-card:hover,
   z-index: 1050;
 }
 
+.clip-dialog-scrim {
+  background: transparent;
+  border: 0;
+  cursor: default;
+  inset: 0;
+  padding: 0;
+  position: absolute;
+}
+
 .clip-dialog {
   background: var(--panel-bg);
   border: 1px solid var(--panel-border);
@@ -2205,8 +2232,11 @@ button.camera-card:hover,
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.35);
   max-height: calc(100vh - 2rem);
   max-width: 56rem;
+  overscroll-behavior: contain;
   overflow: auto;
+  position: relative;
   width: 100%;
+  z-index: 1;
 }
 
 .clip-dialog-header {
@@ -2375,12 +2405,6 @@ h6,
   font-size: 0.72rem;
 }
 
-.theme-style-menu {
-  border-top: 1px solid var(--panel-border);
-  margin-top: 0.35rem;
-  padding-top: 0.35rem;
-}
-
 .theme-style-preview {
   align-items: center;
   border: 2px solid;
@@ -2476,5 +2500,183 @@ h6,
   }
   .module-nav.is-open {
     display: block;
+  }
+}
+
+[data-theme-style="corporate"] {
+  --style-font-body: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --style-font-display: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --style-radius-card: 0.35rem;
+  --style-radius-control: 0.25rem;
+  --style-shadow-panel: 0 10px 24px rgba(15, 27, 45, 0.08), inset 0 1px rgba(255, 255, 255, 0.06);
+  --style-border-width: 1px;
+  --style-letter-spacing: 0;
+  --style-panel-texture: none;
+  --style-eyebrow-transform: uppercase;
+  --style-eyebrow-letter-spacing: 0.1em;
+}
+
+[data-theme-style="minimal"] {
+  --style-font-body: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --style-font-display: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --style-radius-card: 0.5rem;
+  --style-radius-control: 0.375rem;
+  --style-shadow-panel: none;
+  --style-border-width: 1px;
+  --style-letter-spacing: 0;
+  --style-panel-texture: none;
+  --style-eyebrow-transform: none;
+  --style-eyebrow-letter-spacing: 0.08em;
+}
+
+/* Shared module page standard: header, tabs and body are identical in every MFE. */
+.module-page {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+.module-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: color-mix(in srgb, var(--panel-bg) 92%, transparent);
+  border: var(--style-border-width, 1px) solid color-mix(in srgb, var(--panel-border) 78%, var(--accent));
+  border-radius: var(--style-radius-card, 0.9rem);
+  box-shadow: var(--style-shadow-panel, 0 12px 30px #00000018);
+  backdrop-filter: blur(14px);
+}
+.module-heading {
+  min-width: 0;
+}
+.module-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.module-body {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+.module-tabs {
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.3rem;
+  overflow-x: auto;
+  border-bottom: 1px solid color-mix(in srgb, var(--panel-border) 78%, transparent);
+  scrollbar-width: thin;
+}
+.module-tab {
+  flex: 0 0 auto;
+  padding: 0.55rem 0.8rem;
+  color: var(--text-muted);
+  font-weight: 650;
+  white-space: nowrap;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--style-radius-control, 0.55rem);
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+.module-tab:hover,
+.module-tab:focus-visible {
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.module-tab.is-active {
+  color: var(--tab-selected-text);
+  background: var(--accent);
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--panel-border));
+}
+.module-section {
+  min-width: 0;
+  padding: clamp(1rem, 3vw, 1.35rem);
+  background: color-mix(in srgb, var(--panel-bg) 92%, transparent);
+  border: var(--style-border-width, 1px) solid color-mix(in srgb, var(--panel-border) 78%, var(--accent));
+  border-radius: var(--style-radius-card, 0.9rem);
+  box-shadow: var(--style-shadow-panel, 0 12px 30px #00000018);
+}
+@media (max-width: 575.98px) {
+  .module-header {
+    flex-direction: column;
+  }
+  .module-actions {
+    width: 100%;
+  }
+  .module-tabs {
+    margin-inline: -0.3rem;
+  }
+}
+
+/* Collapsible desktop module rail. */
+.app-shell.is-sidebar-collapsed {
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+}
+.module-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.module-nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--style-radius-control, 0.55rem);
+}
+.module-nav-toggle:hover,
+.module-nav-toggle:focus-visible {
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+.module-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.module-nav-icon {
+  flex: 0 0 1.35rem;
+  width: 1.35rem;
+  text-align: center;
+}
+.module-nav-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.is-sidebar-collapsed .module-nav-label {
+  display: none;
+}
+.is-sidebar-collapsed .module-nav .nav-link {
+  justify-content: center;
+  padding-inline: 0.35rem;
+}
+.is-sidebar-collapsed .module-nav-toggle {
+  align-self: center;
+}
+@media (max-width: 991.98px) {
+  .app-shell.is-sidebar-collapsed {
+    display: block;
+  }
+  .module-nav-toggle {
+    display: none;
+  }
+  .module-nav-label {
+    display: inline;
   }
 }
