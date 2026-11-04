@@ -412,6 +412,36 @@
   --bs-link-hover-color: #ffe5f0;
 }
 
+/* Bootstrap utility colors are fixed to the light palette; on the dark
+   themes they fall below WCAG AA. Route them through the active tokens. */
+.text-secondary {
+  color: var(--text-muted) !important;
+}
+.btn-outline-secondary {
+  --bs-btn-color: var(--text-muted);
+  --bs-btn-border-color: var(--text-muted);
+  --bs-btn-hover-color: var(--app-bg);
+  --bs-btn-hover-bg: var(--text-muted);
+  --bs-btn-hover-border-color: var(--text-muted);
+  --bs-btn-active-color: var(--app-bg);
+  --bs-btn-active-bg: var(--text-muted);
+  --bs-btn-active-border-color: var(--text-muted);
+  --bs-btn-disabled-color: var(--text-muted);
+  --bs-btn-disabled-border-color: var(--text-muted);
+}
+.btn-outline-danger {
+  --bs-btn-color: var(--danger);
+  --bs-btn-border-color: var(--danger);
+  --bs-btn-hover-color: var(--app-bg);
+  --bs-btn-hover-bg: var(--danger);
+  --bs-btn-hover-border-color: var(--danger);
+  --bs-btn-active-color: var(--app-bg);
+  --bs-btn-active-bg: var(--danger);
+  --bs-btn-active-border-color: var(--danger);
+  --bs-btn-disabled-color: var(--danger);
+  --bs-btn-disabled-border-color: var(--danger);
+}
+
 * {
   box-sizing: border-box;
 }
