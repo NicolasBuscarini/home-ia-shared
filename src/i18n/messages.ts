@@ -877,6 +877,21 @@ const enUS = {
   'biometrics.error.conflict': 'Another enrollment for this account is in progress. Reload and try again.',
   'biometrics.error.forbidden': 'This account cannot enroll biometrics for the requested target.',
   'biometrics.error.submit': 'Could not enroll biometrics. Try again.',
+  'biometrics.link.label': 'Authorized roster person',
+  'biometrics.link.none': 'Not linked to an authorized person.',
+  'biometrics.link.linked': 'Linked to {name}',
+  'biometrics.link.choose': 'Select a person',
+  'biometrics.link.link': 'Link',
+  'biometrics.link.linking': 'Linking…',
+  'biometrics.link.unlink': 'Unlink',
+  'biometrics.link.unlinking': 'Unlinking…',
+  'biometrics.link.empty': 'No authorized person on this page. Create one or navigate to the person.',
+  'biometrics.link.notice.linked': 'Biometrics linked to the authorized person.',
+  'biometrics.link.notice.unlinked': 'Link to the authorized person removed.',
+  'biometrics.link.error.update': 'Could not update the link. Try again.',
+  'biometrics.link.error.target': 'The enrollment or the person was not found.',
+  'biometrics.link.error.forbidden': 'Only an Administrator can link biometrics to a person.',
+  'biometrics.link.error.unavailable': 'The roster or the biometric enrollment is unavailable.',
 } as const;
 
 export type TranslationKey = keyof typeof enUS;
@@ -1773,6 +1788,21 @@ const ptBR: Record<TranslationKey, string> = {
   'biometrics.error.conflict': 'Outro cadastro desta conta está em andamento. Recarregue e tente novamente.',
   'biometrics.error.forbidden': 'Esta conta não pode cadastrar biometria para o titular solicitado.',
   'biometrics.error.submit': 'Não foi possível cadastrar a biometria. Tente novamente.',
+  'biometrics.link.label': 'Pessoa autorizada do roster',
+  'biometrics.link.none': 'Sem vínculo com pessoa autorizada.',
+  'biometrics.link.linked': 'Vinculada a {name}',
+  'biometrics.link.choose': 'Selecione uma pessoa',
+  'biometrics.link.link': 'Vincular',
+  'biometrics.link.linking': 'Vinculando…',
+  'biometrics.link.unlink': 'Desvincular',
+  'biometrics.link.unlinking': 'Desvinculando…',
+  'biometrics.link.empty': 'Nenhuma pessoa autorizada nesta página. Cadastre ou navegue até a pessoa.',
+  'biometrics.link.notice.linked': 'Biometria vinculada à pessoa autorizada.',
+  'biometrics.link.notice.unlinked': 'Vínculo com a pessoa autorizada removido.',
+  'biometrics.link.error.update': 'Não foi possível atualizar o vínculo. Tente novamente.',
+  'biometrics.link.error.target': 'A inscrição ou a pessoa não foi encontrada.',
+  'biometrics.link.error.forbidden': 'Apenas Administrator pode vincular biometria a uma pessoa.',
+  'biometrics.link.error.unavailable': 'O roster ou o cadastro biométrico está indisponível.',
 };
 
 export const catalogs = {
