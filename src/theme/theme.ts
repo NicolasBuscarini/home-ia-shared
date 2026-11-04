@@ -46,23 +46,68 @@ export type ThemeId = (typeof THEMES)[number]['id'];
 export const THEME_STYLES = [
   {
     id: 'classic',
-    preview: { label: 'Aa', radius: '0.75rem', background: '#18211f', accent: '#8ce0b4' },
+    preview: {
+      label: 'Aa',
+      radius: '0.7rem',
+      borderWidth: '1px',
+      fontWeight: 700,
+      letterSpacing: '0em',
+      fontFamily: 'var(--font-ui)',
+      background: '#18211f',
+      accent: '#8ce0b4',
+    },
   },
   {
     id: 'modern',
-    preview: { label: 'Aa', radius: '1.15rem', background: '#101a29', accent: '#8ecbff' },
+    preview: {
+      label: 'Aa',
+      radius: '999px',
+      borderWidth: '1px',
+      fontWeight: 640,
+      letterSpacing: '-0.02em',
+      fontFamily: 'var(--font-ui)',
+      background: '#101a29',
+      accent: '#8ecbff',
+    },
   },
   {
     id: 'rustic',
-    preview: { label: 'Aa', radius: '0.3rem', background: '#211b12', accent: '#f4c56e' },
+    preview: {
+      label: 'Aa',
+      radius: '0.3rem',
+      borderWidth: '2px',
+      fontWeight: 600,
+      letterSpacing: '0.02em',
+      fontFamily: 'Georgia, "Times New Roman", serif',
+      background: '#211b12',
+      accent: '#f4c56e',
+    },
   },
   {
     id: 'corporate',
-    preview: { label: 'Aa', radius: '0.35rem', background: '#0f1b2d', accent: '#5aa9ff' },
+    preview: {
+      label: 'Aa',
+      radius: '0.15rem',
+      borderWidth: '2px',
+      fontWeight: 750,
+      letterSpacing: '0.06em',
+      fontFamily: 'var(--font-ui)',
+      background: '#0f1b2d',
+      accent: '#5aa9ff',
+    },
   },
   {
     id: 'minimal',
-    preview: { label: 'Aa', radius: '0.5rem', background: '#f4f4f2', accent: '#2f3437' },
+    preview: {
+      label: 'Aa',
+      radius: '0px',
+      borderWidth: '1px',
+      fontWeight: 500,
+      letterSpacing: '0.01em',
+      fontFamily: 'var(--font-ui)',
+      background: '#f4f4f2',
+      accent: '#2f3437',
+    },
   },
 ] as const;
 

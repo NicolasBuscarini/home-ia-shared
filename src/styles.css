@@ -1,39 +1,215 @@
+/*
+ * Camada de tokens de estilo.
+ * Cada personalidade (`data-theme-style`) altera forma, borda, tipografia,
+ * movimento e profundidade dos mesmos componentes. Componentes consomem
+ * apenas estes tokens, para que um estilo novo não precise reescrever regras.
+ */
 :root {
   --style-font-body: var(--font-ui);
   --style-font-display: var(--font-ui);
-  --style-radius-card: 0.75rem;
-  --style-radius-control: 0.5rem;
-  --style-shadow-panel: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.18);
+  --style-radius-card: 1.125rem;
+  --style-radius-control: 0.7rem;
+  --style-radius-chip: 0.55rem;
+  --style-radius-brand: 15px;
+  --style-radius-pill: 999px;
   --style-border-width: 1px;
-  --style-letter-spacing: 0;
+  --style-border-width-strong: 1px;
+  --style-border-style: solid;
+  --style-divider-style: solid;
+  --style-shadow-panel:
+    0 18px 44px #00000020, inset 0 1px color-mix(in srgb, var(--text-primary) 6%, transparent),
+    0 0 32px color-mix(in srgb, var(--accent) 5%, transparent);
+  --style-shadow-control: none;
+  --style-panel-blur: 14px;
   --style-panel-texture: none;
+  --style-letter-spacing: 0;
+  --style-heading-weight: 700;
+  --style-heading-track: 0;
   --style-eyebrow-transform: uppercase;
-  --style-eyebrow-letter-spacing: 0.08em;
+  --style-eyebrow-letter-spacing: 0.14em;
+  --style-eyebrow-weight: 750;
+  --style-button-radius: var(--style-radius-control);
+  --style-button-weight: 700;
+  --style-button-transform: none;
+  --style-button-track: 0;
+  --style-button-height: 44px;
+  --style-control-height: 48px;
+  --style-hover-lift: -1px;
+  --style-hover-scale: 1;
+  --style-press-scale: 0.985;
+  --style-motion-fast: 140ms;
+  --style-motion: 180ms;
+  --style-easing: ease;
+  --style-focus-width: 3px;
+  --style-focus-offset: 3px;
+  --style-focus-ring-width: 0.22rem;
+  --style-accent-inset: 0px;
+  --style-ambient-duration: 36s;
+  --style-brand-animation: brand-glow 7s ease-in-out infinite alternate;
+}
+
+[data-theme-style="classic"] {
+  --style-radius-card: 1.125rem;
+  --style-radius-control: 0.7rem;
+  --style-border-width: 1px;
+  --style-border-style: solid;
+  --style-hover-lift: -1px;
+  --style-motion: 180ms;
 }
 
 [data-theme-style="modern"] {
-  --style-radius-card: 1.15rem;
-  --style-radius-control: 0.7rem;
-  --style-shadow-panel: 0 1.25rem 3rem rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+  --style-radius-card: 1.5rem;
+  --style-radius-control: 0.95rem;
+  --style-radius-chip: 0.9rem;
+  --style-radius-brand: 18px;
+  --style-shadow-panel:
+    0 26px 60px rgba(0, 0, 0, 0.42), inset 0 1px rgba(255, 255, 255, 0.08),
+    0 0 46px color-mix(in srgb, var(--accent) 9%, transparent);
+  --style-shadow-control: 0 10px 24px rgba(0, 0, 0, 0.28);
+  --style-panel-blur: 22px;
+  --style-panel-texture: linear-gradient(135deg, rgba(255, 255, 255, 0.055), transparent 55%);
   --style-letter-spacing: -0.015em;
-  --style-panel-texture: linear-gradient(135deg, rgba(255, 255, 255, 0.035), transparent 55%);
+  --style-heading-weight: 640;
+  --style-heading-track: -0.02em;
+  --style-button-radius: 999px;
+  --style-button-weight: 640;
+  --style-button-height: 46px;
+  --style-control-height: 50px;
+  --style-hover-lift: -2px;
+  --style-hover-scale: 1.015;
+  --style-press-scale: 0.97;
+  --style-motion-fast: 160ms;
+  --style-motion: 220ms;
+  --style-easing: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --style-focus-width: 4px;
+  --style-focus-ring-width: 0.3rem;
 }
 
 [data-theme-style="rustic"] {
   --style-font-body: Georgia, "Times New Roman", serif;
   --style-font-display: Georgia, "Times New Roman", serif;
   --style-radius-card: 0.3rem;
-  --style-radius-control: 0.25rem;
-  --style-shadow-panel: 0 0.35rem 0 rgba(0, 0, 0, 0.25);
+  --style-radius-control: 0.3rem;
+  --style-radius-chip: 0.2rem;
+  --style-radius-brand: 6px;
+  --style-radius-pill: 0.45rem;
   --style-border-width: 2px;
-  --style-letter-spacing: 0.015em;
+  --style-border-width-strong: 2px;
+  --style-divider-style: dashed;
+  --style-shadow-panel: 0 0.45rem 0 rgba(0, 0, 0, 0.34);
+  --style-shadow-control: 0 0.2rem 0 rgba(0, 0, 0, 0.3);
+  --style-panel-blur: 0px;
   --style-panel-texture: repeating-linear-gradient(
     0deg,
-    rgba(255, 255, 255, 0.025) 0 1px,
+    rgba(255, 255, 255, 0.03) 0 1px,
     transparent 1px 4px
   );
+  --style-letter-spacing: 0.02em;
+  --style-heading-weight: 600;
+  --style-heading-track: 0.01em;
+  --style-eyebrow-transform: none;
+  --style-eyebrow-letter-spacing: 0.05em;
+  --style-eyebrow-weight: 700;
+  --style-button-weight: 600;
+  --style-hover-lift: 0px;
+  --style-hover-scale: 1;
+  --style-press-scale: 0.99;
+  --style-motion-fast: 120ms;
+  --style-motion: 160ms;
+  --style-easing: ease-in-out;
+  --style-focus-offset: 2px;
+  --style-ambient-duration: 64s;
 }
 
+[data-theme-style="corporate"] {
+  --style-radius-card: 0.2rem;
+  --style-radius-control: 0.2rem;
+  --style-radius-chip: 0.15rem;
+  --style-radius-brand: 4px;
+  --style-radius-pill: 0.2rem;
+  --style-border-width: 1px;
+  --style-border-width-strong: 2px;
+  --style-shadow-panel: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 8px 20px rgba(0, 0, 0, 0.26);
+  --style-shadow-control: none;
+  --style-panel-blur: 0px;
+  --style-panel-texture: none;
+  --style-heading-weight: 720;
+  --style-heading-track: -0.01em;
+  --style-eyebrow-letter-spacing: 0.16em;
+  --style-eyebrow-weight: 800;
+  --style-button-weight: 750;
+  --style-button-transform: uppercase;
+  --style-button-track: 0.055em;
+  --style-button-height: 40px;
+  --style-control-height: 42px;
+  --style-hover-lift: 0px;
+  --style-hover-scale: 1;
+  --style-press-scale: 0.995;
+  --style-motion-fast: 100ms;
+  --style-motion: 130ms;
+  --style-easing: ease-out;
+  --style-focus-width: 2px;
+  --style-focus-offset: 2px;
+  --style-accent-inset: 4px;
+  --style-ambient-duration: 0s;
+  --style-brand-animation: none;
+}
+
+[data-theme-style="minimal"] {
+  --style-radius-card: 0px;
+  --style-radius-control: 0px;
+  --style-radius-chip: 0px;
+  --style-radius-brand: 0px;
+  --style-radius-pill: 0px;
+  --style-border-width: 1px;
+  --style-border-width-strong: 1px;
+  --style-shadow-panel: none;
+  --style-shadow-control: none;
+  --style-panel-blur: 0px;
+  --style-panel-texture: none;
+  --style-letter-spacing: 0;
+  --style-heading-weight: 600;
+  --style-eyebrow-transform: none;
+  --style-eyebrow-letter-spacing: 0.06em;
+  --style-eyebrow-weight: 650;
+  --style-button-weight: 500;
+  --style-button-track: 0.01em;
+  --style-button-height: 42px;
+  --style-control-height: 44px;
+  --style-hover-lift: 0px;
+  --style-hover-scale: 1;
+  --style-press-scale: 1;
+  --style-motion-fast: 80ms;
+  --style-motion: 100ms;
+  --style-focus-width: 2px;
+  --style-focus-offset: 2px;
+  --style-ambient-duration: 0s;
+  --style-brand-animation: none;
+}
+
+/* Profundidade e acento por personalidade, sem duplicar componentes. */
+:is(.panel-card, .app-header, .admin-user-card, .filter-bar) {
+  border-left-width: calc(var(--style-border-width) + var(--style-accent-inset));
+}
+[data-theme-style="corporate"] :is(.panel-card, .app-header, .admin-user-card) {
+  border-left-color: var(--accent);
+}
+[data-theme-style="rustic"] :is(.panel-card, .app-header) {
+  background-image: var(--style-panel-texture);
+}
+[data-theme-style="minimal"] :is(.panel-card, .app-header) {
+  background: var(--panel-bg);
+}
+[data-theme-style="minimal"] .brand-mark {
+  background: var(--accent);
+  color: var(--app-bg);
+  box-shadow: none;
+}
+[data-theme-style="corporate"] .brand-mark {
+  background: var(--accent);
+  color: var(--app-bg);
+  box-shadow: none;
+}
 :root,
 :root[data-theme="forest"] {
   color-scheme: dark;
@@ -284,7 +460,7 @@ body::before {
     );
   content: "";
   pointer-events: none;
-  animation: ambient-drift 28s ease-in-out infinite alternate;
+  animation: ambient-drift var(--style-ambient-duration) ease-in-out infinite alternate;
 }
 body::after {
   position: fixed;
@@ -304,7 +480,7 @@ body::after {
   content: "";
   opacity: 0.52;
   pointer-events: none;
-  animation: light-drift 36s ease-in-out infinite alternate;
+  animation: light-drift var(--style-ambient-duration) ease-in-out infinite alternate;
 }
 .app-shell {
   max-width: 1040px;
@@ -2415,6 +2591,151 @@ h6,
   height: 2.2rem;
   justify-content: center;
   width: 3.2rem;
+}
+
+/* Estilo aplicado aos componentes compartilhados (shell + módulos federados). */
+:is(
+  .panel-card,
+  .camera-card,
+  .clip-card-open,
+  .clip-dialog,
+  .admin-user-card,
+  .filter-bar,
+  .admin-fieldset
+) {
+  border-style: var(--style-border-style);
+  border-width: var(--style-border-width);
+}
+.app-header {
+  border-style: var(--style-border-style);
+  border-width: var(--style-border-width);
+  border-radius: var(--style-radius-card);
+  box-shadow: var(--style-shadow-panel);
+}
+:is(.panel-card, .app-header) {
+  backdrop-filter: blur(var(--style-panel-blur));
+}
+.brand-mark {
+  border-radius: var(--style-radius-brand);
+  animation: var(--style-brand-animation);
+}
+:root[data-theme-style="minimal"] body::before,
+:root[data-theme-style="minimal"] body::after,
+:root[data-theme-style="corporate"] body::before,
+:root[data-theme-style="corporate"] body::after {
+  animation: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: var(--style-heading-weight);
+  letter-spacing: var(--style-heading-track);
+}
+.eyebrow {
+  font-weight: var(--style-eyebrow-weight);
+}
+.btn {
+  min-height: var(--style-button-height);
+  border-radius: var(--style-button-radius);
+  font-weight: var(--style-button-weight);
+  letter-spacing: var(--style-button-track);
+  text-transform: var(--style-button-transform);
+  box-shadow: var(--style-shadow-control);
+  transition-duration: var(--style-motion);
+  transition-timing-function: var(--style-easing);
+}
+.btn:hover:not(:disabled) {
+  transform: translateY(var(--style-hover-lift)) scale(var(--style-hover-scale));
+}
+.btn:active:not(:disabled) {
+  transform: translateY(0) scale(var(--style-press-scale));
+}
+:is(.form-control, .form-select) {
+  min-height: var(--style-control-height);
+  border-radius: var(--style-radius-control);
+  border-style: var(--style-border-style);
+  border-width: var(--style-border-width);
+  transition-duration: var(--style-motion);
+  transition-timing-function: var(--style-easing);
+}
+.form-control:focus,
+.form-select:focus {
+  box-shadow: 0 0 0 var(--style-focus-ring-width) color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.btn:focus-visible {
+  box-shadow: 0 0 0 var(--style-focus-ring-width) color-mix(in srgb, var(--accent) 28%, transparent);
+}
+:is(
+  .btn,
+  .camera-card,
+  .theme-trigger,
+  .theme-option,
+  .view-tab,
+  .clips-tab,
+  .dashboard-submenu-item,
+  [role="tabpanel"]
+):focus-visible {
+  outline-width: var(--style-focus-width);
+  outline-offset: var(--style-focus-offset);
+}
+.health-pill {
+  border-radius: var(--style-radius-pill);
+}
+:is(.status-badge, .badge) {
+  border-radius: var(--style-radius-chip);
+}
+:is(.camera-card, .theme-trigger, .health-card, .metric-card, .detail-item) {
+  transition-duration: var(--style-motion);
+  transition-timing-function: var(--style-easing);
+}
+.login-heading {
+  border-bottom-style: var(--style-divider-style);
+  border-bottom-width: var(--style-border-width);
+}
+:is(.admin-user-detail, .admin-danger-zone, .admin-fieldset) {
+  border-style: var(--style-border-style);
+  border-width: var(--style-border-width);
+}
+.admin-user-detail,
+.admin-danger-zone {
+  border-width: 0;
+  border-top-style: var(--style-divider-style);
+  border-top-width: var(--style-border-width);
+}
+.biometrics-consent-text {
+  border-left-style: var(--style-divider-style);
+  border-left-width: var(--style-border-width-strong);
+}
+.people-table :is(th, td) {
+  border-bottom: 1px solid color-mix(in srgb, var(--panel-border) 65%, transparent);
+}
+[data-theme-style="corporate"] .people-table :is(th, td) {
+  border-bottom-width: var(--style-border-width-strong);
+  border-bottom-color: var(--panel-border);
+}
+[data-theme-style="minimal"] .people-table :is(th, td) {
+  border-bottom-color: transparent;
+}
+[data-theme-style="rustic"] .people-table :is(th, td) {
+  border-bottom-style: dashed;
+}
+[data-theme-style="corporate"] :is(.view-tab, .clips-tab, .dashboard-submenu-item) {
+  text-transform: uppercase;
+  letter-spacing: 0.045em;
+  font-size: 0.78rem;
+}
+[data-theme-style="minimal"]
+  :is(.panel-card, .app-header, .admin-user-card, .filter-bar, .admin-fieldset, .camera-card) {
+  box-shadow: none;
 }
 
 /* Portal module navigation: desktop sidebar, mobile sandwich drawer. */
