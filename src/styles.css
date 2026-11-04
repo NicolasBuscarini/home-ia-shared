@@ -2304,6 +2304,58 @@ button.camera-card:hover,
 
 .clip-card {
   min-width: 0;
+  position: relative;
+}
+
+.clip-card-select,
+.clip-card-download {
+  align-items: center;
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 999px;
+  display: flex;
+  height: 2rem;
+  justify-content: center;
+  position: absolute;
+  top: 0.5rem;
+  width: 2rem;
+  z-index: 2;
+}
+
+.clip-card-select {
+  left: 0.5rem;
+}
+
+.clip-card-select input {
+  height: 1rem;
+  width: 1rem;
+}
+
+.clip-card-download {
+  color: inherit;
+  right: 0.5rem;
+  text-decoration: none;
+}
+
+.clip-card-download:hover,
+.clip-card-download:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.clips-selection-bar,
+.clips-load-more {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: space-between;
+  margin: 0.75rem 0;
+}
+
+.clips-sentinel {
+  height: 1px;
+  width: 100%;
 }
 
 .clip-card-open {
