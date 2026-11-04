@@ -2256,6 +2256,40 @@ button.camera-card:hover,
   padding: 0;
 }
 
+.clips-filter-group {
+  border: 1px solid var(--panel-border);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0.65rem 0.75rem 0.75rem;
+}
+
+.clips-filter-group > legend {
+  color: var(--text-muted);
+  float: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0 0.35rem;
+  width: auto;
+}
+
+.clips-filter-grid {
+  display: grid;
+  gap: 0.65rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+}
+
+.clips-filter-field {
+  min-width: 0;
+}
+
+.clips-filter-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .clips-filter-summary {
   align-items: center;
   display: flex;
