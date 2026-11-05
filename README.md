@@ -7,6 +7,7 @@ Pacote compartilhado do Home IA para o shell `home-ia-web` e o remote `home-ia-m
 - `i18n` e catálogo tipado pt-BR/en-US.
 - Tokens e aplicação de temas.
 - Cliente HTTP same-origin (`request`, `getJson`, `postJson`, `ApiError`).
+- Emissor de eventos de navegação do EventStore (`createPlatformEventEmitter`, `createCorrelationId`) com `fetch`/relógio/IDs injetáveis, fila limitada e falha silenciosa.
 - Tipos de domínio compartilhados (`CameraStatus`, `UserRole`, etc.).
 - `StatusBadge`.
 - `styles.css` global do portal.
@@ -20,6 +21,13 @@ Os dois apps declaram a dependência local:
 ```
 
 O pacote é compilado para `dist/` por `tsc`. Em Module Federation, `home-ia-shared` é compartilhado como singleton para que o `I18nProvider` do shell seja o mesmo contexto consumido pelo remote.
+
+## Eventos de navegação
+
+`createPlatformEventEmitter` envia `navigation.viewed`/`ui.action` para `/api/v1/events` com `source=shell`,
+`emitter=browser`, `X-Correlation-Id` e fila limitada (descarte contabilizado). O servidor deriva ator e sessão
+e só aceita esses tipos de sessão same-origin; falha de envio nunca lança para a UI e aparece em `getStats()`.
+O helper não decide autorização, não registra ator e não deve receber dados pessoais ou mídia em `metadata`.
 
 ## Verificações
 
