@@ -2266,6 +2266,14 @@ button.camera-card:hover,
   padding: 0.85rem;
 }
 
+.clips-filter-toolbar {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: space-between;
+}
+
 .clips-quick-ranges {
   border: 0;
   display: flex;
@@ -2273,6 +2281,22 @@ button.camera-card:hover,
   gap: 0.4rem;
   margin: 0;
   padding: 0;
+}
+
+.clips-filter-toggle {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-left: auto;
+}
+
+.clips-filter-body {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.clips-filter-body[data-collapsed="true"] {
+  display: none;
 }
 
 .clips-filter-group {
@@ -2314,6 +2338,42 @@ button.camera-card:hover,
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+@media (max-width: 767.98px) {
+  .clips-filters {
+    gap: 0.65rem;
+    padding: 0.65rem;
+  }
+  .clips-filter-toggle {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .clips-filter-group {
+    padding: 0.5rem 0.6rem 0.6rem;
+  }
+  .clips-filter-grid {
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .clips-filter-field :is(.form-control, .form-select) {
+    min-width: 0;
+  }
+  .clips-filter-actions .btn {
+    width: 100%;
+  }
+  .clips-filter-summary {
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 768px) {
+  .clips-filter-toggle {
+    display: none;
+  }
+  .clips-filter-body[data-collapsed="true"] {
+    display: grid;
+  }
 }
 
 .clips-results-header {
@@ -2610,6 +2670,29 @@ button.camera-card:hover,
   }
 }
 
+.biometrics-camera-preview,
+.biometrics-camera-capture {
+  display: block;
+  width: 100%;
+  max-width: 26rem;
+  max-height: 20rem;
+  object-fit: cover;
+  border: 1px solid var(--panel-border);
+  border-radius: 0.75rem;
+  background: #000;
+}
+
+.biometrics-module {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.biometrics-module .panel-card {
+  margin: 0;
+}
+
 .biometrics-panel .biometrics-list,
 .extractor-list {
   display: grid;
@@ -2617,6 +2700,12 @@ button.camera-card:hover,
   list-style: none;
   margin: 1rem 0 0;
   padding: 0;
+}
+
+@media (min-width: 992px) {
+  .biometrics-module .biometrics-list {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
 }
 
 .biometrics-item,
