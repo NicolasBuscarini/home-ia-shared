@@ -463,6 +463,13 @@ const enUS = {
   'platform.integrations.fallback':
     'Without a stored credential the integration uses the environment token, if present.',
   'clips.detailTitle': 'Clip details',
+  'clips.identity.title': 'Identity observations',
+  'clips.identity.empty': 'No identity observation was recorded for this clip.',
+  'clips.identity.loadError': 'Could not load this clip’s identity observations.',
+  'clips.identity.detailError': 'Could not load the observation details.',
+  'clips.identity.ingestedAt': 'Ingested',
+  'clips.identity.margin': 'Margin',
+  'clips.identity.policy': 'Policy',
   'clips.camera': 'Camera',
   'clips.mediaState': 'Media state',
   'clips.archiveState': 'Archive state',
@@ -1027,6 +1034,18 @@ const enUS = {
   'people.identity.review.loadError': 'Could not load this observation.',
   'people.identity.review.original':
     'Original prediction: {status} · policy {policy} · margin {margin}. It is never rewritten.',
+  'people.identity.frames.title': 'Clip frames',
+  'people.identity.frames.loading': 'Loading sampled frames…',
+  'people.identity.frames.withoutClip':
+    'This observation has no linked clip, so there are no frames to review.',
+  'people.identity.frames.error':
+    'Could not load the clip frames. Reviewing frames also requires access to clips.',
+  'people.identity.frames.hint':
+    'Frames sampled by face recognition. Each image is rendered on demand from the clip and is not stored.',
+  'people.identity.frames.faceDetected': 'Face detected in this sample',
+  'people.identity.frames.alt': 'Clip frame {index} at {seconds} s',
+  'people.identity.frames.caption': 'Frame {index} · {seconds} s',
+  'people.identity.frames.unavailable': 'Frame unavailable',
   'people.identity.review.history': 'Review history',
   'people.identity.review.noHistory': 'No review recorded yet.',
   'people.identity.review.reviewedBy': 'by {reviewer} on {date}',
@@ -1149,11 +1168,17 @@ const enUS = {
   'biometrics.camera.error.capture': 'Could not capture the photo. Try again or choose a file.',
   'biometrics.consent.accept':
     'I am the account owner, I authorize this biometric enrollment and I know I can revoke it at any time.',
+  'biometrics.consent.accept.delegate':
+    'As an authorized manager, I confirm the holder consented to this biometric enrollment and that it can be revoked at any time.',
+  'biometrics.target.label': 'Holder public ID (optional)',
+  'biometrics.target.hint':
+    'Leave it blank to enroll the signed-in account. To support another holder, enter their public ID (USR…); the API authorizes the target and the holder may revoke at any time.',
   'biometrics.consent.text':
     'Consent covers the encrypted signature, a fixed 365-day retention and exclusion from backups; recovery requires enrolling again.',
   'biometrics.submit': 'Enroll biometrics',
   'biometrics.submitting': 'Enrolling…',
   'biometrics.notice.enrolled': 'Biometric enrollment created and encrypted.',
+  'biometrics.notice.enrolledFor': 'Biometric enrollment created and encrypted for holder {id}.',
   'biometrics.notice.revoked': 'Biometric enrollment revoked; the encrypted payload was erased.',
   'biometrics.active.hint':
     'While an enrollment is active, enrolling again replaces it instead of keeping two signatures.',
@@ -1170,6 +1195,7 @@ const enUS = {
     'Biometric enrollment is unavailable: the face extractor or the encryption key is not configured. Nothing was stored.',
   'biometrics.error.conflict': 'Another enrollment for this account is in progress. Reload and try again.',
   'biometrics.error.forbidden': 'This account cannot enroll biometrics for the requested target.',
+  'biometrics.error.target': 'Enter a valid public ID (USR followed by 12 digits) of an existing holder.',
   'biometrics.error.submit': 'Could not enroll biometrics. Try again.',
   'biometrics.link.label': 'Authorized roster person',
   'biometrics.verify.title': 'Check the face',
@@ -1749,6 +1775,13 @@ const ptBR: Record<TranslationKey, string> = {
   'platform.integrations.fallback':
     'Sem credencial armazenada, a integração usa o token de ambiente, se existir.',
   'clips.detailTitle': 'Detalhes do clipe',
+  'clips.identity.title': 'Observações de identidade',
+  'clips.identity.empty': 'Nenhuma observação de identidade foi registrada para este clipe.',
+  'clips.identity.loadError': 'Não foi possível carregar as observações de identidade deste clipe.',
+  'clips.identity.detailError': 'Não foi possível carregar os detalhes desta observação.',
+  'clips.identity.ingestedAt': 'Recebida em',
+  'clips.identity.margin': 'Margem',
+  'clips.identity.policy': 'Política',
   'clips.camera': 'Câmera',
   'clips.mediaState': 'Estado da mídia',
   'clips.archiveState': 'Estado do arquivo',
@@ -2323,6 +2356,18 @@ const ptBR: Record<TranslationKey, string> = {
   'people.identity.review.loadError': 'Não foi possível carregar esta observação.',
   'people.identity.review.original':
     'Predição original: {status} · política {policy} · margem {margin}. Ela nunca é reescrita.',
+  'people.identity.frames.title': 'Frames do clipe',
+  'people.identity.frames.loading': 'Carregando frames amostrados…',
+  'people.identity.frames.withoutClip':
+    'Esta observação não tem clipe associado, então não há frames para revisar.',
+  'people.identity.frames.error':
+    'Não foi possível carregar os frames do clipe. Revisar frames também exige acesso a clipes.',
+  'people.identity.frames.hint':
+    'Frames amostrados pelo reconhecimento facial. Cada imagem é gerada sob demanda a partir do clipe e não fica armazenada.',
+  'people.identity.frames.faceDetected': 'Rosto detectado nesta amostra',
+  'people.identity.frames.alt': 'Frame {index} do clipe em {seconds} s',
+  'people.identity.frames.caption': 'Frame {index} · {seconds} s',
+  'people.identity.frames.unavailable': 'Frame indisponível',
   'people.identity.review.history': 'Histórico de revisões',
   'people.identity.review.noHistory': 'Nenhuma revisão registrada ainda.',
   'people.identity.review.reviewedBy': 'por {reviewer} em {date}',
@@ -2446,11 +2491,17 @@ const ptBR: Record<TranslationKey, string> = {
     'Não foi possível capturar a foto. Tente novamente ou escolha um arquivo.',
   'biometrics.consent.accept':
     'Sou o titular da conta, autorizo este cadastro biométrico e sei que posso revogá-lo a qualquer momento.',
+  'biometrics.consent.accept.delegate':
+    'Como gestor autorizado, confirmo que o titular consentiu com este cadastro biométrico e que pode revogá-lo a qualquer momento.',
+  'biometrics.target.label': 'ID público do titular (opcional)',
+  'biometrics.target.hint':
+    'Deixe em branco para cadastrar a conta conectada. Para apoiar outro titular, informe o ID público (USR…); a API valida o alvo e o titular pode revogar a qualquer momento.',
   'biometrics.consent.text':
     'O consentimento cobre a assinatura cifrada, a retenção fixa de 365 dias e a exclusão de backup; a recuperação exige novo cadastro.',
   'biometrics.submit': 'Cadastrar biometria',
   'biometrics.submitting': 'Cadastrando…',
   'biometrics.notice.enrolled': 'Cadastro biométrico criado e cifrado.',
+  'biometrics.notice.enrolledFor': 'Cadastro biométrico criado e cifrado para o titular {id}.',
   'biometrics.notice.revoked': 'Cadastro biométrico revogado; o payload cifrado foi apagado.',
   'biometrics.active.hint':
     'Enquanto houver cadastro ativo, um novo cadastro o substitui em vez de manter duas assinaturas.',
@@ -2468,6 +2519,8 @@ const ptBR: Record<TranslationKey, string> = {
     'O cadastro biométrico está indisponível: o extrator facial ou a chave de cifra não estão configurados. Nada foi gravado.',
   'biometrics.error.conflict': 'Outro cadastro desta conta está em andamento. Recarregue e tente novamente.',
   'biometrics.error.forbidden': 'Esta conta não pode cadastrar biometria para o titular solicitado.',
+  'biometrics.error.target':
+    'Informe um ID público válido (USR seguido de 12 dígitos) de um titular existente.',
   'biometrics.error.submit': 'Não foi possível cadastrar a biometria. Tente novamente.',
   'biometrics.link.label': 'Pessoa autorizada do roster',
   'biometrics.verify.title': 'Conferir o rosto',
