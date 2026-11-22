@@ -41,6 +41,18 @@ A partir da raiz do contexto:
 
 O Compose fixa Node por digest e roda lint, formatação e build. Não há runtime próprio, banco, segredo ou serviço de produção.
 
-## Estilos visuais (ADR111)
+## Temas e estilos visuais (ADR111/ADR135)
 
-Os temas de cor ficam em blocos `[data-theme="<id>"]`; as personalidades visuais ficam em `[data-theme-style="<id>"]` e expõem somente custom properties `--style-*` (raio, borda e espessura, divisor, sombra, blur, textura, tipografia, botão, altura de controle, movimento, foco e acento). Componentes consomem esses tokens; um estilo novo é um bloco novo, não CSS por componente. Verificações: `./garage verify-home-shared`, `format-home-shared` e `lock-home-shared`.
+Revisão `T16-UI-THEMES-REFINE`: `--style-enter-animation` define o movimento de
+entrada por perfil; controles, superfícies internas e tabelas usam o mesmo
+contrato. Use `.style-inset` em contêineres internos, não utilitários de raio/borda
+fixos. Movimento reduzido elimina animações/transformações decorativas, sem
+remover transforms funcionais da matriz. A paleta ajusta a luminosidade de
+acentos extremos para preservar contraste de links e seleção/hover.
+
+O shell executa `e2e/themeStyles.spec.ts` pelo comando raiz
+`./home-ia test-federation-web`: onze estilos × dois modos, remotes reais,
+sentinelas de CSS computado, 320 px, axe e capturas locais. Não representa
+homologação de câmera, dispositivo físico ou todos os fluxos de negócio.
+
+A cor primária e o modo claro/escuro derivam as cores complementares. O shell oferece matriz HSV, prévia/HEX e switch de modo; os presets não são visíveis e seus IDs permanecem apenas para compatibilidade. CSS da matriz/switch e textos pt-BR/en-US são compartilhados, sem nova API ou dependência. Os onze estilos de forma/superfície permanecem um eixo independente e são definidos por um único bloco `[data-theme-style="<id>"]` de tokens `--style-*` (superfícies e cabeçalho, bordas, sombras, textura, tipografia, controles, movimento e foco). Shell e módulos federados consomem os mesmos tokens: não duplique regras por personalidade nos componentes. `prefers-reduced-motion` continua respeitado, inclusive no switch. Testes contratuais de CSS verificam a unicidade dos blocos, diversidade das superfícies, o uso dos tokens e assinaturas dos estilos. Verificações pela raiz: `./home-ia verify-home-shared`, `format-home-shared` e `lock-home-shared`.

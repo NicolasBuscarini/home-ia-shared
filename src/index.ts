@@ -6,4 +6,5 @@ export * from './i18n/messages';
 export * from './routing/deepLink';
 export * from './services/events';
 export * from './services/http';
+export * from './theme/palette';
 export * from './theme/theme';
